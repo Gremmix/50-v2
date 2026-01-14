@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Приглашение на 50-летие</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;600&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --burgundy: #8B0000;
+      --cream: #FFFBF0;
+      --champagne: #F7EFD9;
+      --navy: #0A2463;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(180deg, var(--cream), var(--champagne));
+      color: var(--navy);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    section {
+      padding: 60px 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, rgba(212,175,55,0.25), rgba(0,0,0,0.6)),
+                  url('https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .hero small {
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 88px);
+      color: var(--gold);
+      margin: 15px 0;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    .hero h2 {
+      font-size: clamp(20px, 3vw, 32px);
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+
+    /* ===== TIMER ===== */
+    .timer-title {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .timer {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .time-box {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(6px);
+      border-radius: 12px;
+      padding: 12px 14px;
+      min-width: 70px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
+    .time-box span {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .time-box small {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ===== INVITATION TEXT ===== */
+    .invitation {
+      text-align: center;
+    }
+
+    .invitation h2 {
+      font-size: 36px;
+      margin-bottom: 25px;
+    }
+
+    .invitation p {
+      max-width: 760px;
+      margin: 0 auto 20px;
+      font-size: 18px;
+    }
+
+    .divider {
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 30px auto;
+    }
+
+    /* ===== INFO BLOCKS ===== */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: 18px;
+      padding: 30px 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .info-card h3 {
+      margin-bottom: 10px;
+      color: var(--burgundy);
+    }
+
+    .info-card a {
+      color: var(--navy);
+      text-decoration: underline;
+    }
+
+    /* ===== CTA ===== */
+    .cta {background: linear-gradient(135deg, var(--burgundy), var(--gold));
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 34px;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      margin-bottom: 30px;
+      font-size: 18px;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 16px 36px;
+      background: white;
+      color: var(--burgundy);
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      min-width: 200px;
+    }
+
+    .cta a:hover {
+      background: var(--champagne);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: var(--cream);
+      font-size: 14px;
+    }
+
+    footer .line {
+      width: 100px;
+      height: 1px;
+      background: var(--gold);
+      margin: 10px auto 15px;
+    }
+
+    /* ===== FADE-IN ===== */
+    .fade {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .fade.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content container fade">
+      <small>Сердечно приглашаем на празднование</small>
+      <h1>50-летия!</h1>
+      <h2>Наших любимых родителей</h2>
+
+      <div class="timer-title">До праздника осталось:</div>
+      <div class="timer" id="timer">
+        <div class="time-box"><span id="days">00</span><small>дней</small></div>
+        <div class="time-box"><span id="hours">00</span><small>часов</small></div>
+        <div class="time-box"><span id="minutes">00</span><small>минут</small></div>
+        <div class="time-box"><span id="seconds">00</span><small>секунд</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVITATION -->
+  <section class="invitation fade">
+    <div class="container">
+      <h2>Дорогие друзья и родные!</h2>
+      <div class="divider"></div>
+      <p>
+        Полвека — это прекрасная дата, наполненная мудростью, опытом и светлыми воспоминаниями.
+        Мы хотим разделить эту радость с вами!
+      </p>
+      <p>
+        Приглашаем вас окунуться в атмосферу душевного тепла, добрых историй,
+        улыбок и праздничного настроения.
+      </p>
+    </div>
+  </section>
+
+  <!-- INFO -->
+  <section class="fade">
+    <div class="container info-grid">
+      <div class="info-card">
+        <h3>Когда</h3>
+        <p>25 октября 2023</p>
+        <p>Сбор гостей в 18:00</p>
+      </div>
+      <div class="info-card">
+        <h3>Где</h3>
+        <p>Ресторан «Старый город»</p>
+        <a href="https://maps.google.com" target="_blank">Построить маршрут</a>
+      </div>
+      <div class="info-card">
+        <h3>Дресс-код</h3>
+        <p>Праздничный</p>
+        <p>Будем рады вашим нарядным образам</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta fade">
+    <div class="container">
+      <h2>Будем рады видеть вас!</h2>
+      <p>Пожалуйста, подтвердите своё присутствие до 15 октября</p>
+      <a href="tel:+79991234567">Сообщить о присутствии</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="line"></div>
+    <p>С любовью, ваша семья</p>
+    <p>© 2023. Приглашение создано с теплом в сердце</p>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // ===== TIMER =====
+    const targetDate = new Date("2023-10-25T18:00:00").getTime();
+
+    function updateTimer() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("timer").innerHTML = "<strong>Праздник начался! 🎉</strong>";
+        return;
+      }
+
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("days").textContent = d;
+      document.getElementById("hours").textContent = h;
+      document.getElementById("minutes").textContent = m;
+      document.getElementById("seconds").textContent = s;
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    // ===== FADE-IN ON SCROLL =====
+    const fades = document.querySelectorAll('.fade');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    fades.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
