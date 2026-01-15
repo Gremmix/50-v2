@@ -1,364 +1,1457 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Приглашение на 50-летие</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на 50-летие</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Оптимизированные шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&family=Marck+Script&family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;600&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F7EFD9;
+            --burgundy: #8B0000;
+            --cream: #FFFBF0;
+            --navy: #0A2463;
+            --shadow: rgba(139, 0, 0, 0.15);
+            --gold-transparent: rgba(212, 175, 55, 0.1);
+        }
 
-  <style>
-    :root {
-      --gold: #D4AF37;
-      --burgundy: #8B0000;
-      --cream: #FFFBF0;
-      --champagne: #F7EFD9;
-      --navy: #0A2463;
+        /* Базовые настройки */
+        html {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.5;
+            color: #444;
+            background: linear-gradient(135deg, #fff9f0 0%, #fff5e6 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Декоративные элементы фона */
+        .gold-dot {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .burgundy-dot {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: var(--burgundy);
+            border-radius: 50%;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Анимированные линии */
+        .line-decoration {
+            position: fixed;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        /* Контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Герой секция с декоративным фоном */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 251, 240, 0.95);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 0, 0, 0.03) 0%, transparent 50%);
+            z-index: -1;
+            animation: gentlePulse 8s ease-in-out infinite alternate;
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                padding: 80px 0 60px;
+            }
+        }
+
+        .hero-subtitle {
+            font-family: 'Caveat', cursive;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--burgundy);
+            margin-bottom: 10px;
+            line-height: 1.3;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-subtitle::before, .hero-subtitle::after {
+            content: "✦";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            opacity: 0.5;
+            font-size: 1.2rem;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        .hero-subtitle::before {
+            left: -30px;
+        }
+
+        .hero-subtitle::after {
+            right: -30px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-subtitle {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+            
+            .hero-subtitle::before, .hero-subtitle::after {
+                font-size: 1.5rem;
+            }
+        }
+
+        .hero-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            line-height: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title::before, .hero-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            width: 40%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            animation: expandLine 3s ease-in-out infinite;
+        }
+
+        .hero-title::before {
+            left: 0;
+        }
+
+        .hero-title::after {
+            right: 0;
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 5rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .hero-title {
+                font-size: 6rem;
+            }
+        }
+
+        .hero-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--burgundy);
+            margin: 30px 0 20px;
+            font-weight: 600;
+            line-height: 1.2;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Анимированные цветы вокруг имени */
+        .flower-decoration {
+            position: absolute;
+            color: var(--gold);
+            opacity: 0.6;
+            font-size: 1.5rem;
+            animation: floatAround 6s ease-in-out infinite;
+        }
+
+        .flower-1 { top: -20px; left: -30px; animation-delay: 0s; }
+        .flower-2 { top: -20px; right: -30px; animation-delay: 1.5s; }
+        .flower-3 { bottom: -20px; left: -30px; animation-delay: 3s; }
+        .flower-4 { bottom: -20px; right: -30px; animation-delay: 4.5s; }
+
+        @media (min-width: 768px) {
+            .hero-name {
+                font-size: 3rem;
+                margin: 40px 0 30px;
+            }
+            
+            .flower-decoration {
+                font-size: 2rem;
+            }
+        }
+
+        /* Таймер */
+        .timer-section {
+            margin: 30px 0 40px;
+            position: relative;
+        }
+
+        .timer-title {
+            font-family: 'Marck Script', cursive;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 20px;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        @media (min-width: 768px) {
+            .timer-title {
+                font-size: 1.8rem;
+                margin-bottom: 25px;
+            }
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .timer {
+                gap: 15px;
+            }
+        }
+
+        .timer-unit {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 15px 8px;
+            min-width: 75px;
+            flex: 1;
+            max-width: 100px;
+            box-shadow: 
+                0 5px 15px var(--shadow),
+                0 0 20px rgba(212, 175, 55, 0.1) inset;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timer-unit::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .timer-unit:hover::before {
+            transform: translateX(100%);
+        }
+
+        @media (min-width: 768px) {
+            .timer-unit {
+                min-width: 100px;
+                padding: 20px 10px;
+                max-width: 120px;
+            }
+        }
+
+        .timer-unit:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(139, 0, 0, 0.2);
+        }
+
+        .timer-number {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            line-height: 1;
+            display: block;
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .timer-number {
+                font-size: 3rem;
+            }
+        }
+
+        .timer-label {
+            font-family: 'Caveat', cursive;
+            font-size: 1.2rem;
+            color: var(--navy);
+            margin-top: 5px;
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .timer-label {
+                font-size: 1.5rem;
+                margin-top: 8px;
+            }
+        }
+
+        /* Основной текст с декоративными элементами */
+        .invitation {
+            padding: 50px 0;
+            background-color: rgba(255, 255, 255, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .invitation {
+                padding: 70px 0;
+            }
+        }
+
+        .invitation::before, .invitation::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50,0 C60,20 80,30 100,50 C80,70 60,80 50,100 C40,80 20,70 0,50 C20,30 40,20 50,0 Z' fill='%23D4AF37' opacity='0.05'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+            animation: gentlePulse 6s ease-in-out infinite;
+        }
+
+        .invitation::before {
+            top: 20px;
+            left: 20px;
+        }
+
+        .invitation::after {
+            bottom: 20px;
+            right: 20px;
+            transform: rotate(180deg);
+        }
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--burgundy);
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 3rem;
+                margin-bottom: 35px;
+            }
+        }
+
+        .invitation-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-family: 'Marck Script', cursive;
+            font-size: 1.3rem;
+            color: #555;
+            text-align: center;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .invitation-text {
+                font-size: 1.6rem;
+                line-height: 1.7;
+            }
+        }
+
+        .invitation-text p {
+            margin-bottom: 20px;
+            position: relative;
+            padding: 0 10px;
+        }
+
+        @media (min-width: 768px) {
+            .invitation-text p {
+                margin-bottom: 25px;
+                padding: 0 20px;
+            }
+        }
+
+        /* Информационный блок с украшениями */
+        .info-section {
+            padding: 50px 0;
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 253, 245, 0.8) 0%, rgba(255, 251, 240, 0.8) 100%);
+        }
+
+        @media (min-width: 768px) {
+            .info-section {
+                padding: 70px 0;
+            }
+        }
+
+        .info-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, var(--gold-transparent) 1px, transparent 1px),
+                radial-gradient(circle at 90% 80%, var(--gold-transparent) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .info-cards {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .info-cards {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 30px;
+                margin-top: 40px;
+            }
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 10px 25px var(--shadow);
+            border-top: 4px solid var(--gold);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--burgundy), var(--gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .info-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        @media (min-width: 768px) {
+            .info-card {
+                width: calc(33.333% - 20px);
+                max-width: 300px;
+            }
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(139, 0, 0, 0.2);
+        }
+
+        .info-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: inline-block;
+            height: 70px;
+            width: 70px;
+            line-height: 70px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .info-icon::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+        }
+
+        .info-card:hover .info-icon {
+            transform: rotate(15deg) scale(1.1);
+            background: rgba(212, 175, 55, 0.15);
+        }
+
+        .info-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--burgundy);
+            margin-bottom: 10px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .info-detail {
+            font-family: 'Caveat', cursive;
+            font-size: 1.4rem;
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .map-btn {
+            display: inline-block;
+            background: var(--burgundy);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Marck Script', cursive;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .map-btn:hover::before {
+            left: 100%;
+        }
+
+        .map-btn:hover {
+            background: white;
+            color: var(--burgundy);
+            border-color: var(--burgundy);
+            transform: translateY(-2px);
+        }
+
+        /* Блок подтверждения */
+        .confirmation {
+            padding: 50px 0;
+            background: linear-gradient(135deg, var(--burgundy) 0%, #6a0000 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .confirmation {
+                padding: 70px 0;
+            }
+        }
+
+        .confirmation::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .confirmation-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--gold-light);
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (min-width: 768px) {
+            .confirmation-title {
+                font-size: 3rem;
+                margin-bottom: 20px;
+            }
+        }
+
+        .confirmation-text {
+            font-family: 'Caveat', cursive;
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 25px;
+            line-height: 1.4;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .confirmation-text {
+                font-size: 1.6rem;
+                margin-bottom: 30px;
+            }
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold) 0%, #e6c12e 100%);
+            color: var(--burgundy);
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 8px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--gold);
+            min-width: 250px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .contact-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .contact-btn:hover::before {
+            left: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .contact-btn {
+                display: inline-block;
+                min-width: auto;
+                padding: 15px 30px;
+                margin: 10px;
+            }
+        }
+
+        .contact-btn:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Футер */
+        .footer {
+            padding: 30px 0;
+            text-align: center;
+            background-color: var(--cream);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .footer {
+                padding: 40px 0;
+            }
+        }
+
+        .footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 49%, rgba(212, 175, 55, 0.03) 50%, transparent 51%);
+            background-size: 20px 20px;
+            pointer-events: none;
+        }
+
+        .footer-signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--burgundy);
+            margin-bottom: 10px;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .footer-signature {
+                font-size: 2.5rem;
+            }
+        }
+
+        .footer-line {
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 15px auto;
+            position: relative;
+            z-index: 1;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .footer-line::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, white, transparent);
+            animation: slideLine 3s linear infinite;
+        }
+
+        .footer-note {
+            font-family: 'Marck Script', cursive;
+            font-size: 1.1rem;
+            color: #666;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Анимации */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes subtleFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @keyframes gentlePulse {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes expandLine {
+            0%, 100% {
+                width: 40%;
+            }
+            50% {
+                width: 50%;
+            }
+        }
+
+        @keyframes floatAround {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(5px, -5px) rotate(90deg);
+            }
+            50% {
+                transform: translate(10px, 0) rotate(180deg);
+            }
+            75% {
+                transform: translate(5px, 5px) rotate(270deg);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes slideLine {
+            from {
+                left: -100%;
+            }
+            to {
+                left: 100%;
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .subtle-float {
+            animation: subtleFloat 4s ease-in-out infinite;
+        }
+
+        /* Особые медиа-запросы */
+        @media (max-width: 360px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-name {
+                font-size: 1.8rem;
+            }
+            
+            .timer-unit {
+                min-width: 65px;
+                padding: 12px 6px;
+            }
+            
+            .timer-number {
+                font-size: 1.8rem;
+            }
+            
+            .timer-label {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .invitation-text {
+                font-size: 1.2rem;
+            }
+            
+            .contact-btn {
+                min-width: 200px;
+                padding: 10px 20px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Для iPhone с "чёлкой" */
+        @supports (padding: max(0px)) {
+            .hero, .invitation, .info-section, .confirmation, .footer {
+                padding-left: max(20px, env(safe-area-inset-left));
+                padding-right: max(20px, env(safe-area-inset-right));
+            }
+            
+            .hero {
+                padding-top: max(60px, env(safe-area-inset-top));
+            }
+            
+            .footer {
+                padding-bottom: max(30px, env(safe-area-inset-bottom));
+            }
+        }
+
+        /* Отключаем анимации при предпочтении пользователя */
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in, .subtle-float, .timer-unit, .info-card, .contact-btn, .map-btn,
+            .hero-subtitle::before, .hero-subtitle::after, .flower-decoration,
+            .info-icon::before, .footer-line::before {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+        /* Параллакс элементы */
+.parallax-layer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.parallax-element {
+    position: absolute;
+    opacity: 0.1;
+    transition: transform 0.1s linear;
+}
+
+/* Золотые вензеля */
+.parallax-flourish {
+    font-family: 'Dancing Script', cursive;
+    color: var(--gold);
+    font-size: 120px;
+    opacity: 0.03;
+}
+
+/* Цифра 50 для фона */
+.parallax-number {
+    font-family: 'Dancing Script', cursive;
+    color: var(--burgundy);
+    font-size: 400px;
+    opacity: 0.02;
+    font-weight: 700;
+}
+
+/* Декоративные круги */
+.parallax-circle {
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    opacity: 0.05;
+}
+
+/* Конверты */
+.parallax-envelope {
+    opacity: 0.07;
+    font-size: 80px;
+    color: var(--burgundy);
+}
+
+/* Адаптивность для параллакса */
+@media (max-width: 768px) {
+    .parallax-flourish {
+        font-size: 80px;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    
+    .parallax-number {
+        font-size: 200px;
     }
-
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background: linear-gradient(180deg, var(--cream), var(--champagne));
-      color: var(--navy);
-      line-height: 1.6;
-      overflow-x: hidden;
+    
+    .parallax-envelope {
+        font-size: 50px;
     }
+}
 
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
+@media (max-width: 480px) {
+    .parallax-element {
+        opacity: 0.05; /* Уменьшаем прозрачность на мобильных */
     }
+}
 
-    img {
-      max-width: 100%;
-      display: block;
+/* Отключаем параллакс для пользователей, которые предпочитают уменьшенное движение */
+@media (prefers-reduced-motion: reduce) {
+    .parallax-element {
+        transition: none !important;
+        animation: none !important;
     }
-
-    section {
-      padding: 60px 20px;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      min-height: 100vh;
-      background: radial-gradient(circle at top, rgba(212,175,55,0.25), rgba(0,0,0,0.6)),
-                  url('https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1600&q=80');
-      background-size: cover;
-      background-position: center;
-      color: var(--cream);
-      display: flex;
-      align-items: center;
-      text-align: center;
-      position: relative;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-    }
-
-    .hero small {
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 14px;
-      opacity: 0.9;
-    }
-
-    .hero h1 {
-      font-size: clamp(42px, 7vw, 88px);
-      color: var(--gold);
-      margin: 15px 0;
-      text-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    }
-
-    .hero h2 {
-      font-size: clamp(20px, 3vw, 32px);
-      font-weight: 400;
-      margin-bottom: 30px;
-    }
-
-    /* ===== TIMER ===== */
-    .timer-title {
-      margin-bottom: 10px;
-      font-size: 16px;
-    }
-
-    .timer {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .time-box {
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(6px);
-      border-radius: 12px;
-      padding: 12px 14px;
-      min-width: 70px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-    }
-
-    .time-box span {
-      display: block;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 26px;
-      font-weight: 600;
-      color: var(--gold);
-    }
-
-    .time-box small {
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    /* ===== INVITATION TEXT ===== */
-    .invitation {
-      text-align: center;
-    }
-
-    .invitation h2 {
-      font-size: 36px;
-      margin-bottom: 25px;
-    }
-
-    .invitation p {
-      max-width: 760px;
-      margin: 0 auto 20px;
-      font-size: 18px;
-    }
-
-    .divider {
-      width: 120px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 30px auto;
-    }
-
-    /* ===== INFO BLOCKS ===== */
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
-      text-align: center;
-    }
-
-    .info-card {
-      background: white;
-      border-radius: 18px;
-      padding: 30px 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease;
-    }
-
-    .info-card:hover {
-      transform: translateY(-6px);
-    }
-
-    .info-card h3 {
-      margin-bottom: 10px;
-      color: var(--burgundy);
-    }
-
-    .info-card a {
-      color: var(--navy);
-      text-decoration: underline;
-    }
-
-    /* ===== CTA ===== */
-    .cta {background: linear-gradient(135deg, var(--burgundy), var(--gold));
-      color: white;
-      text-align: center;
-    }
-
-    .cta h2 {
-      font-size: 34px;
-      margin-bottom: 20px;
-    }
-
-    .cta p {
-      margin-bottom: 30px;
-      font-size: 18px;
-    }
-
-    .cta a {
-      display: inline-block;
-      padding: 16px 36px;
-      background: white;
-      color: var(--burgundy);
-      border-radius: 40px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      min-width: 200px;
-    }
-
-    .cta a:hover {
-      background: var(--champagne);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      background: var(--cream);
-      font-size: 14px;
-    }
-
-    footer .line {
-      width: 100px;
-      height: 1px;
-      background: var(--gold);
-      margin: 10px auto 15px;
-    }
-
-    /* ===== FADE-IN ===== */
-    .fade {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
-    }
-
-    .fade.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+}
+    </style>
 </head>
 <body>
+    <!-- Параллакс слой с декоративными элементами -->
+<div class="parallax-layer" id="parallaxLayer">
+    <!-- Большая цифра 50 -->
+    <div class="parallax-element parallax-number" style="top: 15%; left: 5%;" data-speed="0.1">50</div>
+    <div class="parallax-element parallax-number" style="top: 60%; right: 8%;" data-speed="0.15">50</div>
+    
+    <!-- Золотые вензеля -->
+    <div class="parallax-element parallax-flourish" style="top: 20%; right: 15%;" data-speed="0.3">❦</div>
+    <div class="parallax-element parallax-flourish" style="top: 70%; left: 10%;" data-speed="0.25">❧</div>
+    <div class="parallax-element parallax-flourish" style="top: 40%; left: 20%;" data-speed="0.2">✾</div>
+    <div class="parallax-element parallax-flourish" style="top: 80%; right: 20%;" data-speed="0.35">✦</div>
+    
+    <!-- Декоративные круги -->
+    <div class="parallax-element parallax-circle" style="width: 100px; height: 100px; top: 30%; right: 5%;" data-speed="0.4"></div>
+    <div class="parallax-element parallax-circle" style="width: 150px; height: 150px; top: 65%; left: 5%;" data-speed="0.3"></div>
+    <div class="parallax-element parallax-circle" style="width: 80px; height: 80px; top: 15%; left: 15%;" data-speed="0.5"></div>
+    
+    <!-- Конверты -->
+    <div class="parallax-element parallax-envelope" style="top: 85%; left: 15%;" data-speed="0.6">✉</div>
+    <div class="parallax-element parallax-envelope" style="top: 25%; right: 25%;" data-speed="0.45">✉</div>
+    
+    <!-- Шампанское -->
+    <div class="parallax-element" style="font-size: 60px; color: var(--gold); top: 45%; right: 12%;" data-speed="0.55">🍾</div>
+    <div class="parallax-element" style="font-size: 60px; color: var(--gold); top: 75%; left: 25%;" data-speed="0.65">🥂</div>
+    
+    <!-- Праздничные элементы -->
+    <div class="parallax-element" style="font-size: 50px; color: var(--burgundy); top: 10%; left: 30%;" data-speed="0.7">🎉</div>
+    <div class="parallax-element" style="font-size: 50px; color: var(--burgundy); top: 90%; right: 30%;" data-speed="0.8">🎁</div>
+    
+    <!-- Звезды -->
+    <div class="parallax-element" style="font-size: 40px; color: var(--gold); top: 35%; left: 35%;" data-speed="0.9">★</div>
+    <div class="parallax-element" style="font-size: 40px; color: var(--gold); top: 55%; right: 35%;" data-speed="0.85">★</div>
+</div>
+    <!-- Декоративные элементы фона -->
+    <div id="backgroundDots"></div>
+    <div id="backgroundLines"></div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content container fade">
-      <small>Сердечно приглашаем на празднование</small>
-      <h1>50-летия!</h1>
-      <h2>Наших любимых родителей</h2>
+    <!-- Герой секция с таймером -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-subtitle fade-in">Сердечно приглашаем на празднование</div>
+            <h1 class="hero-title fade-in subtle-float">50-летия!</h1>
+            
+            <div class="hero-name fade-in">
+                <div class="flower-decoration flower-1">✾</div>
+                <div class="flower-decoration flower-2">✾</div>
+                <div class="flower-decoration flower-3">✾</div>
+                <div class="flower-decoration flower-4">✾</div>
+                Татьяны
+            </div>
+            
+            <div class="timer-section fade-in">
+                <div class="timer-title">До юбилея осталось:</div>
+                <div class="timer" id="countdown-timer">
+                    <div class="timer-unit">
+                        <span class="timer-number" id="days">00</span>
+                        <span class="timer-label">дней</span>
+                    </div>
+                    <div class="timer-unit">
+                        <span class="timer-number" id="hours">00</span>
+                        <span class="timer-label">часов</span>
+                    </div>
+                    <div class="timer-unit">
+                        <span class="timer-number" id="minutes">00</span>
+                        <span class="timer-label">минут</span>
+                    </div>
+                    <div class="timer-unit">
+                        <span class="timer-number" id="seconds">00</span>
+                        <span class="timer-label">секунд</span>
+                    </div>
+                </div>
+                <div class="timer-finished" id="timer-finished" style="display: none;">
+                    <div style="font-family: 'Dancing Script', cursive; font-size: 2rem; color: var(--gold);">Праздник начался!</div>
+                    <div style="font-family: 'Caveat', cursive; font-size: 1.5rem; color: var(--burgundy); margin-top: 10px;">Ждём вас сегодня!</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <div class="timer-title">До праздника осталось:</div>
-      <div class="timer" id="timer">
-        <div class="time-box"><span id="days">00</span><small>дней</small></div>
-        <div class="time-box"><span id="hours">00</span><small>часов</small></div>
-        <div class="time-box"><span id="minutes">00</span><small>минут</small></div>
-        <div class="time-box"><span id="seconds">00</span><small>секунд</small></div>
-      </div>
-    </div>
-  </section>
+    <!-- Пригласительный текст -->
+    <section class="invitation">
+        <div class="container">
+            <h2 class="section-title fade-in">Дорогие друзья и родные!</h2>
+            <div class="invitation-text fade-in">
+                <p>Полвека — это прекрасная дата, наполненная мудростью, опытом и светлыми воспоминаниями. Этот юбилей — не просто цифра, а целая история жизни, любви, достижений и бесценных моментов.</p>
+                <p>Мы хотим разделить эту радость с вами — теми, кто был рядом все эти годы, поддерживал, вдохновлял и делил с нами и радости, и трудности.</p>
+                <p>Приглашаем вас окунуться в атмосферу душевного тепла, добрых историй и праздничного настроения. Давайте вместе сделаем этот день незабываемым!</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- INVITATION -->
-  <section class="invitation fade">
-    <div class="container">
-      <h2>Дорогие друзья и родные!</h2>
-      <div class="divider"></div>
-      <p>
-        Полвека — это прекрасная дата, наполненная мудростью, опытом и светлыми воспоминаниями.
-        Мы хотим разделить эту радость с вами!
-      </p>
-      <p>
-        Приглашаем вас окунуться в атмосферу душевного тепла, добрых историй,
-        улыбок и праздничного настроения.
-      </p>
-    </div>
-  </section>
+    <!-- Информационный блок -->
+    <section class="info-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Ждём вас на празднике</h2>
+            <div class="info-cards">
+                <div class="info-card fade-in">
+                    <div class="info-icon">
+                        <i class="far fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="info-title">Когда</h3>
+                    <div class="info-detail">26 февраля 2026 года.</div>
+                    <div class="info-detail">Сбор гостей в 17:00</div>
+                </div>
+                
+                <div class="info-card fade-in">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="info-title">Где</h3>
+                    <div class="info-detail">Кафе "Охотник"</div>
+                    <div class="info-detail">Калужская обл., Малоярославецкий район, с. Детчино, ул. Советская, д. 16</div>
+                    <a href="https://yandex.ru/maps/" class="map-btn" target="_blank">
+                        <i class="fas fa-directions"></i> Построить маршрут
+                    </a>
+                </div>
+                
+                <div class="info-card fade-in">
+                    <div class="info-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3 class="info-title">Дресс-код</h3>
+                    <div class="info-detail">Праздничный</div>
+                    <div class="info-detail">Нам будет приятно видеть вас в нарядных образах</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- INFO -->
-  <section class="fade">
-    <div class="container info-grid">
-      <div class="info-card">
-        <h3>Когда</h3>
-        <p>25 октября 2023</p>
-        <p>Сбор гостей в 18:00</p>
-      </div>
-      <div class="info-card">
-        <h3>Где</h3>
-        <p>Ресторан «Старый город»</p>
-        <a href="https://maps.google.com" target="_blank">Построить маршрут</a>
-      </div>
-      <div class="info-card">
-        <h3>Дресс-код</h3>
-        <p>Праздничный</p>
-        <p>Будем рады вашим нарядным образам</p>
-      </div>
-    </div>
-  </section>
+    <!-- Блок подтверждения -->
+    <section class="confirmation">
+        <div class="container">
+            <h2 class="confirmation-title fade-in">Будем рады видеть вас!</h2>
+            <p class="confirmation-text fade-in">Пожалуйста, подтвердите своё присутствие до 10 февраля 2026 года</p>
+            <div class="text-center">
+                <a href="tel:+79105418793" class="contact-btn fade-in">
+                    <i class="fas fa-phone-alt"></i> Позвонить для подтверждения
+                </a>
+                <!-- <a href="https://wa.me/79991234567" class="contact-btn fade-in">
+                    <i class="fab fa-whatsapp"></i> Написать в WhatsApp
+                </a> -->
+            </div>
+        </div>
+    </section>
 
-  <!-- CTA -->
-  <section class="cta fade">
-    <div class="container">
-      <h2>Будем рады видеть вас!</h2>
-      <p>Пожалуйста, подтвердите своё присутствие до 15 октября</p>
-      <a href="tel:+79991234567">Сообщить о присутствии</a>
-    </div>
-  </section>
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-signature fade-in">С любовью, ваша семья</div>
+            <div class="footer-line"></div>
+            <div class="footer-note fade-in">© 2026. Приглашение создано с теплом в сердце</div>
+        </div>
+    </footer>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="line"></div>
-    <p>С любовью, ваша семья</p>
-    <p>© 2023. Приглашение создано с теплом в сердце</p>
-  </footer>
-
-  <!-- JS -->
-  <script>
-    // ===== TIMER =====
-    const targetDate = new Date("2023-10-25T18:00:00").getTime();
-
-    function updateTimer() {
-      const now = new Date().getTime();
-      const diff = targetDate - now;
-
-      if (diff <= 0) {
-        document.getElementById("timer").innerHTML = "<strong>Праздник начался! 🎉</strong>";
-        return;
-      }
-
-      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const m = Math.floor((diff / (1000 * 60)) % 60);
-      const s = Math.floor((diff / 1000) % 60);
-
-      document.getElementById("days").textContent = d;
-      document.getElementById("hours").textContent = h;
-      document.getElementById("minutes").textContent = m;
-      document.getElementById("seconds").textContent = s;
-    }
-
-    setInterval(updateTimer, 1000);
-    updateTimer();
-
-    // ===== FADE-IN ON SCROLL =====
-    const fades = document.querySelectorAll('.fade');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
+    <script>
+        // Таймер обратного отсчета
+        function updateTimer() {
+            // УСТАНОВИТЕ ДАТУ СОБЫТИЯ ЗДЕСЬ
+            const eventDate = new Date(2026, 1, 24, 0, 0, 0).getTime(); // 25 декабря 2024, 18:00
+            const now = new Date().getTime();
+            const timeLeft = eventDate - now;
+            
+            const timerElement = document.getElementById('countdown-timer');
+            const finishedElement = document.getElementById('timer-finished');
+            const timerTitle = document.querySelector('.timer-title');
+            
+            if (timeLeft < 0) {
+                timerElement.style.display = 'none';
+                finishedElement.style.display = 'block';
+                timerTitle.innerText = 'Праздник начался!';
+                return;
+            }
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').innerText = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
         }
-      });
-    }, { threshold: 0.2 });
+        
+        updateTimer();
+        setInterval(updateTimer, 1000);
+        
+        // Создаем декоративные элементы фона
+        function createBackgroundElements() {
+            const dotContainer = document.getElementById('backgroundDots');
+            const lineContainer = document.getElementById('backgroundLines');
+            
+            // Золотые точки
+            for (let i = 0; i < 30; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'gold-dot';
+                dot.style.left = Math.random() * 100 + 'vw';
+                dot.style.top = Math.random() * 100 + 'vh';
+                dot.style.animationDelay = Math.random() * 5 + 's';
+                dotContainer.appendChild(dot);
+            }
+            
+            // Бордовые точки
+            for (let i = 0; i < 20; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'burgundy-dot';
+                dot.style.left = Math.random() * 100 + 'vw';
+                dot.style.top = Math.random() * 100 + 'vh';
+                dotContainer.appendChild(dot);
+            }
+            
+            // Декоративные линии
+            for (let i = 0; i < 5; i++) {
+                const line = document.createElement('div');
+                line.className = 'line-decoration';
+                line.style.top = Math.random() * 100 + 'vh';
+                line.style.transform = 'rotate(' + (Math.random() * 30 - 15) + 'deg)';
+                line.style.animationDelay = Math.random() * 2 + 's';
+                lineContainer.appendChild(line);
+            }
+        }
+        
+        // Анимация появления элементов
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -30px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', () => {
+            // Создаем фоновые элементы
+            createBackgroundElements();
+            
+            // Наблюдаем за элементами
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+            
+            // Анимируем элементы героя сразу
+            const heroElements = document.querySelectorAll('.hero .fade-in');
+            heroElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    observer.unobserve(el);
+                }, index * 200);
+            });
+        });
+        
+        // Эффект конфетти
+        function createConfetti() {
+            if (window.innerWidth < 768) return; // Только на десктопе
+            
+            const symbols = ['❦', '❧', '✾', '✦', '✽', '★'];
+            const colors = ['#D4AF37', '#8B0000', '#F7EFD9'];
+            
+            for (let i = 0; i < 25; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.fontSize = Math.random() * 10 + 15 + 'px';
+                confetti.style.opacity = '0.8';
+                confetti.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-30px';
+                confetti.style.zIndex = '9999';
+                confetti.style.pointerEvents = 'none';
+                confetti.style.fontFamily = 'Arial, sans-serif';
+                
+                document.body.appendChild(confetti);
+                
+                // Анимация
+                const animation = confetti.animate([
+                    { 
+                        transform: 'translateY(0) rotate(0deg)',
+                        opacity: 0.8 
+                    },
+                    { 
+                        transform: `translateY(${window.innerHeight + 30}px) rotate(${Math.random() * 720}deg)`,
+                        opacity: 0 
+                    }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+                });
+                
+                animation.onfinish = () => {
+                    if (confetti.parentNode) {
+                        document.body.removeChild(confetti);
+                    }
+                };
+            }
+        }
+        
+        // Запускаем конфетти при загрузке
+        window.addEventListener('load', () => {
+            setTimeout(createConfetti, 800);
+        });
+        
+        // Дополнительные конфетти при клике
+        document.querySelector('.timer').addEventListener('click', createConfetti);
+        
+        // Адаптация для мобильных
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            // Уменьшаем количество анимаций на мобильных
+            document.querySelectorAll('.flower-decoration').forEach(el => {
+                el.style.animationDuration = '8s';
+            });
+        }
+        
+        // Отладка
+        console.log('=== ИНСТРУКЦИЯ ПО НАСТРОЙКЕ ===');
+        console.log('Измените дату события в строке:');
+        console.log('const eventDate = new Date(2024, 11, 25, 18, 0, 0).getTime();');
+        // Параллакс эффект
+function initParallax() {
+    const parallaxLayer = document.getElementById('parallaxLayer');
+    if (!parallaxLayer) return;
+    
+    const parallaxElements = parallaxLayer.querySelectorAll('.parallax-element');
+    
+    // Проверяем, не отключены ли анимации
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+        parallaxLayer.style.display = 'none';
+        return;
+    }
+    
+    // Настройки параллакса
+    const parallaxConfig = {
+        intensity: 0.5, // Интенсивность эффекта (меньше = плавнее)
+        mobileIntensity: 0.3, // Меньшая интенсивность на мобильных
+        disableOnMobile: false // Можно включить, если на мобильных тормозит
+    };
+    
+    // Отключаем на очень маленьких экранах, если нужно
+    if (parallaxConfig.disableOnMobile && window.innerWidth < 768) {
+        parallaxLayer.style.display = 'none';
+        return;
+    }
+    
+    // Определяем интенсивность
+    const intensity = window.innerWidth < 768 ? parallaxConfig.mobileIntensity : parallaxConfig.intensity;
+    
+    // Функция обновления позиций
+    function updateParallax() {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight - windowHeight;
+        
+        // Нормализованная позиция прокрутки (от 0 до 1)
+        const scrollProgress = documentHeight > 0 ? scrollY / documentHeight : 0;
+        
+        parallaxElements.forEach(element => {
+            const speed = parseFloat(element.getAttribute('data-speed') || '0.3');
+            
+            // Вычисляем смещение
+            const offset = scrollProgress * windowHeight * speed * intensity;
+            
+            // Применяем трансформацию
+            element.style.transform = `translateY(${offset}px)`;
+            
+            // Добавляем легкое изменение прозрачности
+            const elementRect = element.getBoundingClientRect();
+            const elementCenter = elementRect.top + elementRect.height / 2;
+            const distanceFromCenter = Math.abs(elementCenter - windowHeight / 2);
+            const visibility = 1 - (distanceFromCenter / windowHeight);
+            
+            // Плавно меняем прозрачность элементов в зависимости от их позиции
+            element.style.opacity = Math.max(0.02, visibility * 0.2).toString();
+        });
+    }
+    
+    // Оптимизация с помощью requestAnimationFrame
+    let isTicking = false;
+    function onScroll() {
+        if (!isTicking) {
+            requestAnimationFrame(() => {
+                updateParallax();
+                isTicking = false;
+            });
+            isTicking = true;
+        }
+    }
+    
+    // Инициализация
+    updateParallax(); // Устанавливаем начальные позиции
+    
+    // Слушаем события
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', updateParallax);
+    
+    // Плавное появление параллакс-элементов
+    setTimeout(() => {
+        parallaxElements.forEach((el, index) => {
+            setTimeout(() => {
+                el.style.transition = 'opacity 1s ease';
+                el.style.opacity = el.style.opacity; // Триггерим переход
+            }, index * 100);
+        });
+    }, 500);
+}
 
-    fades.forEach(el => observer.observe(el));
-  </script>
-
+// Инициализируем параллакс после загрузки
+document.addEventListener('DOMContentLoaded', () => {
+    // Ждем немного, чтобы не нагружать начальную загрузку
+    setTimeout(initParallax, 1000);
+});
+    </script>
 </body>
 </html>
